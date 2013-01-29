@@ -39,8 +39,13 @@ def connectToMaster() :
         print(answer)
 
 
-def reportDownloadComplete():
-    pass
+def reportDownloadComplete(file, md5):
+    try :
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((MasterAddress, MasterPort))
+        s.send("DOWNLOAD_COMPLETE\n" + file + "\n" + md5)
+    finally:
+        s.close()
 
 def reportUploadComplete():
     pass
@@ -49,6 +54,15 @@ def getFile():
     pass
 
 def giveFile():
+    pass
+
+def deleteFile():
+    pass
+
+def reportState():
+    pass
+
+def propagateFile():
     pass
 
 if __name__ == '__main__' :
