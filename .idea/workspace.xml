@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="38cc14e3-8da6-49cd-9628-2767e1dded34" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slave_server/SlaveConfig.py" afterPath="$PROJECT_DIR$/slave_server/SlaveConfig.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slave_server/SlaveMasterProtocol.py" afterPath="$PROJECT_DIR$/slave_server/SlaveMasterProtocol.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slave_server/main.py" afterPath="$PROJECT_DIR$/slave_server/main.py" />
     </list>
     <ignored path="BUProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,16 +73,15 @@
       <file leaf-file-name="SlaveMasterProtocol.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/slave_server/SlaveMasterProtocol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="0" selection-start="1559" selection-end="1559" vertical-scroll-proportion="0.9305556">
+            <state line="58" column="4" selection-start="1658" selection-end="1662" vertical-scroll-proportion="0.5833333">
               <folding>
                 <element signature="e#368#1132#0" expanded="true" />
                 <element signature="e#1178#1381#0" expanded="true" />
-                <element signature="e#1415#1419#0" expanded="true" />
-                <element signature="e#1440#1444#0" expanded="true" />
-                <element signature="e#1466#1470#0" expanded="true" />
-                <element signature="e#1494#1498#0" expanded="true" />
-                <element signature="e#1523#1527#0" expanded="true" />
-                <element signature="e#1554#1558#0" expanded="true" />
+                <element signature="e#1424#1627#0" expanded="true" />
+                <element signature="e#1694#1698#0" expanded="true" />
+                <element signature="e#1732#1736#0" expanded="true" />
+                <element signature="e#1771#1775#0" expanded="true" />
+                <element signature="e#1812#1816#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -387,7 +384,11 @@
       <created>1359409190014</created>
       <updated>1359409190014</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="main loop in slave">
+      <created>1359418792280</created>
+      <updated>1359418792280</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -469,7 +470,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="main loop in slave" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -483,6 +484,7 @@
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="." />
+    <MESSAGE value="main loop in slave" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -595,16 +597,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/slave_server/SlaveMasterProtocol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="0" selection-start="1559" selection-end="1559" vertical-scroll-proportion="0.9305556">
+        <state line="58" column="4" selection-start="1658" selection-end="1662" vertical-scroll-proportion="0.5833333">
           <folding>
             <element signature="e#368#1132#0" expanded="true" />
             <element signature="e#1178#1381#0" expanded="true" />
-            <element signature="e#1415#1419#0" expanded="true" />
-            <element signature="e#1440#1444#0" expanded="true" />
-            <element signature="e#1466#1470#0" expanded="true" />
-            <element signature="e#1494#1498#0" expanded="true" />
-            <element signature="e#1523#1527#0" expanded="true" />
-            <element signature="e#1554#1558#0" expanded="true" />
+            <element signature="e#1424#1627#0" expanded="true" />
+            <element signature="e#1694#1698#0" expanded="true" />
+            <element signature="e#1732#1736#0" expanded="true" />
+            <element signature="e#1771#1775#0" expanded="true" />
+            <element signature="e#1812#1816#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -47,22 +47,27 @@ def reportDownloadComplete(file, md5):
     finally:
         s.close()
 
-def reportUploadComplete():
+def reportUploadComplete(file, md5):
+    try :
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((MasterAddress, MasterPort))
+        s.send("DOWNLOAD_COMPLETE\n" + file + "\n" + md5)
+    finally:
+        s.close()
+
+def getFile(s, massage):
     pass
 
-def getFile():
+def giveFile(s, massage):
     pass
 
-def giveFile():
+def deleteFile(s, massage):
     pass
 
-def deleteFile():
+def reportState(s, massage):
     pass
 
-def reportState():
-    pass
-
-def propagateFile():
+def propagateFile(s, massage):
     pass
 
 if __name__ == '__main__' :
