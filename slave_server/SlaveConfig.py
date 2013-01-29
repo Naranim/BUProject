@@ -5,3 +5,5 @@ MasterPort = 8090
 
 SlaveName = "slave001"
 SlavePort = 7799
+
+TICKET_TIMEOUT = 10

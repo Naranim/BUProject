@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38cc14e3-8da6-49cd-9628-2767e1dded34" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/misc/beautiful_stringstxt.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/misc/in.txt" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/master_server/BULib.py" afterPath="$PROJECT_DIR$/bin/BULib.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/misc/__init__.py" afterPath="$PROJECT_DIR$/bin/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/misc/listener.py" afterPath="$PROJECT_DIR$/bin/listener.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/master_server/DataBase.py" afterPath="$PROJECT_DIR$/master_server/DataBase.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slave_server/SlaveConfig.py" afterPath="$PROJECT_DIR$/slave_server/SlaveConfig.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slave_server/SlaveMasterProtocol.py" afterPath="$PROJECT_DIR$/slave_server/SlaveMasterProtocol.py" />
     </list>
     <ignored path="BUProject.iws" />
@@ -64,7 +71,7 @@
       <file leaf-file-name="SlaveConfig.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slave_server/SlaveConfig.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="16" selection-start="109" selection-end="109" vertical-scroll-proportion="0.0">
+            <state line="8" column="19" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -73,15 +80,16 @@
       <file leaf-file-name="SlaveMasterProtocol.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/slave_server/SlaveMasterProtocol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="4" selection-start="1658" selection-end="1662" vertical-scroll-proportion="0.5833333">
+            <state line="73" column="16" selection-start="2185" selection-end="2185" vertical-scroll-proportion="0.4493007">
               <folding>
-                <element signature="e#368#1132#0" expanded="true" />
-                <element signature="e#1178#1381#0" expanded="true" />
-                <element signature="e#1424#1627#0" expanded="true" />
-                <element signature="e#1694#1698#0" expanded="true" />
-                <element signature="e#1732#1736#0" expanded="true" />
-                <element signature="e#1771#1775#0" expanded="true" />
-                <element signature="e#1812#1816#0" expanded="true" />
+                <element signature="e#22#60#0" expanded="true" />
+                <element signature="e#392#1156#0" expanded="true" />
+                <element signature="e#1202#1405#0" expanded="true" />
+                <element signature="e#1448#1651#0" expanded="true" />
+                <element signature="e#2420#2424#0" expanded="true" />
+                <element signature="e#2458#2462#0" expanded="true" />
+                <element signature="e#2497#2528#0" expanded="true" />
+                <element signature="e#2565#2569#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,8 +121,8 @@
         <option value="$PROJECT_DIR$/hackerCup/ex35.py" />
         <option value="$PROJECT_DIR$/hackerCup/ex45.py" />
         <option value="$PROJECT_DIR$/hackerCup/ex20.py" />
-        <option value="$PROJECT_DIR$/slave_server/SlaveConfig.py" />
         <option value="$PROJECT_DIR$/slave_server/main.py" />
+        <option value="$PROJECT_DIR$/slave_server/SlaveConfig.py" />
         <option value="$PROJECT_DIR$/slave_server/SlaveMasterProtocol.py" />
       </list>
     </option>
@@ -184,20 +192,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="misc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BUProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BUProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="master_server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -209,6 +203,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="BUProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BUProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BUProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -235,6 +243,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bin" />
       <recent name="$PROJECT_DIR$/master_server" />
     </key>
   </component>
@@ -388,7 +397,11 @@
       <created>1359418792280</created>
       <updated>1359418792280</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="small changes in slave-master protocol">
+      <created>1359419012450</created>
+      <updated>1359419012450</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -416,14 +429,14 @@
     <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998326" sideWeight="0.4969697" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12575758" sideWeight="0.7654941" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12575758" sideWeight="0.67001677" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23450586" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998326" sideWeight="0.49772727" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21835443" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -470,7 +483,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="main loop in slave" />
+    <option name="LAST_COMMIT_MESSAGE" value="small changes in slave-master protocol" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -485,6 +498,7 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="." />
     <MESSAGE value="main loop in slave" />
+    <MESSAGE value="small changes in slave-master protocol" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -495,7 +509,7 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/master_server/BULib.py">
+    <entry file="file://$PROJECT_DIR$/bin/BULib.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="13" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0" />
       </provider>
@@ -525,7 +539,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/misc/listener.py">
+    <entry file="file://$PROJECT_DIR$/bin/listener.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="8" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0" />
       </provider>
@@ -565,13 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/slave_server/SlaveConfig.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="16" selection-start="109" selection-end="109" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/master_server/ClientThread.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="18" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.0">
@@ -595,17 +602,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/slave_server/SlaveConfig.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="19" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/slave_server/SlaveMasterProtocol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="4" selection-start="1658" selection-end="1662" vertical-scroll-proportion="0.5833333">
+        <state line="73" column="16" selection-start="2185" selection-end="2185" vertical-scroll-proportion="0.4493007">
           <folding>
-            <element signature="e#368#1132#0" expanded="true" />
-            <element signature="e#1178#1381#0" expanded="true" />
-            <element signature="e#1424#1627#0" expanded="true" />
-            <element signature="e#1694#1698#0" expanded="true" />
-            <element signature="e#1732#1736#0" expanded="true" />
-            <element signature="e#1771#1775#0" expanded="true" />
-            <element signature="e#1812#1816#0" expanded="true" />
+            <element signature="e#22#60#0" expanded="true" />
+            <element signature="e#392#1156#0" expanded="true" />
+            <element signature="e#1202#1405#0" expanded="true" />
+            <element signature="e#1448#1651#0" expanded="true" />
+            <element signature="e#2420#2424#0" expanded="true" />
+            <element signature="e#2458#2462#0" expanded="true" />
+            <element signature="e#2497#2528#0" expanded="true" />
+            <element signature="e#2565#2569#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,6 +1,6 @@
 from master_server.BUConfig import *
 import postgresql.driver as pg_driver
-from master_server.BULib import *
+from bin.BULib import *
 
 class DataBase(object):
     """Static class to manage data base"""

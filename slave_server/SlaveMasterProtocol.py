@@ -3,6 +3,7 @@ from slave_server.SlaveConfig import *
 import socket
 import os
 import time
+from bin.BULib import *
 
 def generateFileList() :
     filesPath = os.getcwd() + "/file_sys"
@@ -56,7 +57,29 @@ def reportUploadComplete(file, md5):
         s.close()
 
 def getFile(s, massage):
-    pass
+    try:
+        fileName = massage[1].split(":")[1]
+        user = massage[2].split(":")[1]
+        ticket = massage[3].split(":")[1]
+        sock = socket.socket()
+        sock.bind(("", 0))
+        port = sock.getsockname()[1]
+        answer = "READY\nPORT:" + str(port)
+        s.send(answer.encode())
+        s.close()
+        sock.settimeout(TICKET_TIMEOUT)
+        (clientSocket, clientAddress) = sock.accept()
+        request = clientSocket.recv(1024)
+        if request == ticket :
+            pass
+        else :
+            clientSocket.send("Wrong ticket".encode())
+
+    except socket.timeout :
+        print("File from %s, ticket: %stimed out." % (user, ticket))
+    finally:
+        sock.close()
+
 
 def giveFile(s, massage):
     pass
@@ -65,7 +88,8 @@ def deleteFile(s, massage):
     pass
 
 def reportState(s, massage):
-    pass
+    s.close()
+    connectToMaster()
 
 def propagateFile(s, massage):
     pass
