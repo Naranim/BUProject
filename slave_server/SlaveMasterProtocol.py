@@ -3,6 +3,7 @@ from slave_server.SlaveConfig import *
 import socket
 import os
 import time
+import shutil
 
 def generateFileList() :
     filesPath = FILES_PATH
@@ -63,6 +64,19 @@ def getFile(s, massage):
         sock = socket.socket()
         sock.bind(("", 0))
         port = sock.getsockname()[1]
+
+        fallowers = []
+        for i in range(4, len(massage)) :
+            try :
+                tmpSocket = socket.socket()
+                socket.connect((massage[i].split(":")[1], massage[i].split(":")[2]))
+                tmpSocket.send(ticket)
+                fallowers.append(tmpSocket)
+            except ConnectionRefusedError :
+                pass
+            except ConnectionError :
+                pass
+
         answer = "READY\nPORT:" + str(port)
         s.send(answer.encode())
         s.close()
@@ -82,6 +96,8 @@ def getFile(s, massage):
                 if not data :
                     break
                 file.write(data)
+                for s in fallowers :
+                    s.send(data)
 
         else :
             clientSocket.send("WRONG TICKET".encode())
@@ -103,6 +119,15 @@ def giveFile(s, massage):
         sock = socket.socket()
         sock.bind(("", 0))
         port = sock.getsockname()[1]
+
+        if not os.path.isfile(FILES_PATH + user + "/" + fileName) :
+            answer = "NOFILE"
+            s.send(answer.encode())
+            s.close()
+            return
+
+
+        s.close()
         answer = "READY\nPORT:" + str(port)
         s.send(answer.encode())
         s.close()
@@ -129,20 +154,42 @@ def giveFile(s, massage):
         sock.close()
         file.close()
 
+def moveFileFromTmp(massage) :
+    fileName = massage[1].split(":")[1]
+    user = massage[2].split(":")[1]
+    try :
+        shutil.move(TMP_PATH + user + "/" + fileName, FILES_PATH + user)
+    except FileNotFoundError:
+        print("Error moving " + fileName)
+
+def moveFileToTmp(massage) :
+    fileName = massage[1].split(":")[1]
+    user = massage[2].split(":")[1]
+    try :
+        shutil.move(FILES_PATH + user + "/" + fileName, TMP_PATH + user)
+    except FileNotFoundError:
+        print("Error moving " + fileName)
+
 def deleteFile(s, massage):
     fileName = massage[1].split(":")[1]
     user = massage[2].split(":")[1]
     try:
         os.remove(FILES_PATH + user + "/" + fileName)
-    except :
+    except FileNotFoundError:
+        print("Error deleting " + fileName)
+
+def deleteFileInTmp(massage):
+    fileName = massage[1].split(":")[1]
+    user = massage[2].split(":")[1]
+    try:
+        os.remove(TMP_PATH + user + "/" + fileName)
+    except FileNotFoundError:
         print("Error deleting " + fileName)
 
 def reportState(s, massage):
     s.close()
     connectToMaster()
 
-def propagateFile(s, massage):
-    pass
 
 if __name__ == '__main__' :
     connectToMaster()

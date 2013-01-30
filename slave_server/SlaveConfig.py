@@ -9,5 +9,6 @@ SlaveName = "slave001"
 SlavePort = 7799
 
 FILES_PATH = os.getcwd() + "/file_sys/";
+TMP_PATH = os.getcwd() + "/tmp/";
 
 TICKET_TIMEOUT = 10

@@ -1,10 +1,16 @@
 __author__ = 'ciemny'
 
-import socket, threading, _thread
+import socket, threading, _thread, os
 from slave_server.SlaveConfig import *
 from slave_server.SlaveMasterProtocol import *
 
 if __name__ == '__main__' :
+    try :
+        os.mkdir("file_sys")
+    except FileExistsError :
+        pass
+
+
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(("", SlavePort))
 

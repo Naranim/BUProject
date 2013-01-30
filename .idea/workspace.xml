@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="38cc14e3-8da6-49cd-9628-2767e1dded34" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/misc/beautiful_stringstxt.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/misc/in.txt" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/master_server/BULib.py" afterPath="$PROJECT_DIR$/bin/BULib.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/misc/__init__.py" afterPath="$PROJECT_DIR$/bin/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/misc/listener.py" afterPath="$PROJECT_DIR$/bin/listener.py" />
+    <list default="true" id="38cc14e3-8da6-49cd-9628-2767e1dded34" name="Default" comment="slave server almost done">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/master_server/DataBase.py" afterPath="$PROJECT_DIR$/master_server/DataBase.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slave_server/SlaveConfig.py" afterPath="$PROJECT_DIR$/slave_server/SlaveConfig.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slave_server/SlaveMasterProtocol.py" afterPath="$PROJECT_DIR$/slave_server/SlaveMasterProtocol.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slave_server/main.py" afterPath="$PROJECT_DIR$/slave_server/main.py" />
     </list>
     <ignored path="BUProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,11 +25,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ClientThread.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/master_server/ClientThread.py">
+      <file leaf-file-name="SlaveMasterProtocol.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/slave_server/SlaveMasterProtocol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="18" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="180" column="29" selection-start="5383" selection-end="5383" vertical-scroll-proportion="0.4755245">
+              <folding>
+                <element signature="e#22#60#0" expanded="true" />
+                <element signature="e#141#336#0" expanded="true" />
+                <element signature="e#367#1131#0" expanded="true" />
+                <element signature="e#1177#1380#0" expanded="true" />
+                <element signature="e#1423#1624#0" expanded="true" />
+                <element signature="e#1655#3338#0" expanded="true" />
+                <element signature="e#3371#4586#0" expanded="true" />
+                <element signature="e#4623#4849#0" expanded="true" />
+                <element signature="e#4884#5110#0" expanded="true" />
+                <element signature="e#5144#5352#0" expanded="true" />
+                <element signature="e#5388#5594#0" expanded="true" />
+                <element signature="e#5629#5660#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -42,7 +50,7 @@
       <file leaf-file-name="ClientMasterProtocol.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/master_server/ClientMasterProtocol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="39" selection-start="1470" selection-end="1470" vertical-scroll-proportion="0.0">
+            <state line="37" column="21" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -51,10 +59,8 @@
       <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slave_server/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="82" selection-start="899" selection-end="899" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#23#56#0" expanded="true" />
-              </folding>
+            <state line="9" column="28" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -71,26 +77,26 @@
       <file leaf-file-name="SlaveConfig.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slave_server/SlaveConfig.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="19" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
+            <state line="11" column="30" selection-start="193" selection-end="193" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SlaveMasterProtocol.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/slave_server/SlaveMasterProtocol.py">
+      <file leaf-file-name="BULib.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/BULib.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="16" selection-start="2185" selection-end="2185" vertical-scroll-proportion="0.4493007">
-              <folding>
-                <element signature="e#22#60#0" expanded="true" />
-                <element signature="e#392#1156#0" expanded="true" />
-                <element signature="e#1202#1405#0" expanded="true" />
-                <element signature="e#1448#1651#0" expanded="true" />
-                <element signature="e#2420#2424#0" expanded="true" />
-                <element signature="e#2458#2462#0" expanded="true" />
-                <element signature="e#2497#2528#0" expanded="true" />
-                <element signature="e#2565#2569#0" expanded="true" />
-              </folding>
+            <state line="1" column="13" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientThread.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/master_server/ClientThread.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="18" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -227,11 +233,11 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="settings.github" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../python" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -401,7 +407,15 @@
       <created>1359419012450</created>
       <updated>1359419012450</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="file system changes">
+      <created>1359458355517</created>
+      <updated>1359458355517</updated>
+    </task>
+    <task id="LOCAL-00005" summary="slave server almost done">
+      <created>1359476612235</created>
+      <updated>1359476612235</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -426,14 +440,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1022" y="-3" width="1370" height="740" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998326" sideWeight="0.4969697" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12575758" sideWeight="0.67001677" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09469697" sideWeight="0.67001677" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998326" sideWeight="0.49772727" order="9" side_tool="true" content_ui="tabs" />
@@ -443,6 +456,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -483,7 +497,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="small changes in slave-master protocol" />
+    <option name="LAST_COMMIT_MESSAGE" value="slave server almost done" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -499,6 +513,8 @@
     <MESSAGE value="." />
     <MESSAGE value="main loop in slave" />
     <MESSAGE value="small changes in slave-master protocol" />
+    <MESSAGE value="file system changes" />
+    <MESSAGE value="slave server almost done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -507,11 +523,6 @@
     <entry file="file://$PROJECT_DIR$/master_server/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/BULib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="13" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/master_server/MasterServerLib.py">
@@ -524,21 +535,6 @@
         <state line="2" column="0" selection-start="75" selection-end="108" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="uml://AlchemyModelDependency/#BUProject">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>AlchemyModelDependency</ID>
-          <OriginalElement>#BUProject</OriginalElement>
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="505.0" y="342.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/listener.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="8" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0" />
@@ -546,35 +542,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hackerCup/ex35.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hackerCup/ex45.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="1" column="0" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hackerCup/ex20.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="20" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/master_server/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="19" selection-start="491" selection-end="491" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slave_server/SlaveClientProtocol.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -586,41 +569,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/master_server/ClientMasterProtocol.py">
+    <entry file="uml://AlchemyModelDependency/#BUProject">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>AlchemyModelDependency</ID>
+          <OriginalElement>#BUProject</OriginalElement>
+          <nodes />
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.5000000000000004" x="577.0" y="273.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/BULib.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="39" selection-start="1470" selection-end="1470" vertical-scroll-proportion="0.0">
+        <state line="1" column="13" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/slave_server/SlaveClientProtocol.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/slave_server/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="82" selection-start="899" selection-end="899" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#23#56#0" expanded="true" />
-          </folding>
+        <state line="9" column="28" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/master_server/ClientMasterProtocol.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="21" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/slave_server/SlaveConfig.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="19" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
+        <state line="11" column="30" selection-start="193" selection-end="193" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/slave_server/SlaveMasterProtocol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="16" selection-start="2185" selection-end="2185" vertical-scroll-proportion="0.4493007">
+        <state line="180" column="29" selection-start="5383" selection-end="5383" vertical-scroll-proportion="0.4755245">
           <folding>
             <element signature="e#22#60#0" expanded="true" />
-            <element signature="e#392#1156#0" expanded="true" />
-            <element signature="e#1202#1405#0" expanded="true" />
-            <element signature="e#1448#1651#0" expanded="true" />
-            <element signature="e#2420#2424#0" expanded="true" />
-            <element signature="e#2458#2462#0" expanded="true" />
-            <element signature="e#2497#2528#0" expanded="true" />
-            <element signature="e#2565#2569#0" expanded="true" />
+            <element signature="e#141#336#0" expanded="true" />
+            <element signature="e#367#1131#0" expanded="true" />
+            <element signature="e#1177#1380#0" expanded="true" />
+            <element signature="e#1423#1624#0" expanded="true" />
+            <element signature="e#1655#3338#0" expanded="true" />
+            <element signature="e#3371#4586#0" expanded="true" />
+            <element signature="e#4623#4849#0" expanded="true" />
+            <element signature="e#4884#5110#0" expanded="true" />
+            <element signature="e#5144#5352#0" expanded="true" />
+            <element signature="e#5388#5594#0" expanded="true" />
+            <element signature="e#5629#5660#0" expanded="true" />
           </folding>
         </state>
       </provider>
