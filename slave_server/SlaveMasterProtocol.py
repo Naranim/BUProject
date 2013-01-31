@@ -4,6 +4,8 @@ import socket
 import os
 import time
 import shutil
+import slave_server.SlaveClientProtocol
+from _thread import *
 
 def generateFileList() :
     filesPath = FILES_PATH
@@ -61,54 +63,22 @@ def getFile(s, massage):
         fileName = massage[1].split(":")[1]
         user = massage[2].split(":")[1]
         ticket = massage[3].split(":")[1]
+        md5 = massage[4].split(":")[1]
         sock = socket.socket()
         sock.bind(("", 0))
         port = sock.getsockname()[1]
 
-        fallowers = []
-        for i in range(4, len(massage)) :
-            try :
-                tmpSocket = socket.socket()
-                socket.connect((massage[i].split(":")[1], massage[i].split(":")[2]))
-                tmpSocket.send(ticket)
-                fallowers.append(tmpSocket)
-            except ConnectionRefusedError :
-                pass
-            except ConnectionError :
-                pass
+        fallowersAddresses = []
+        for i in range(5, len(massage)) :
+            fallowersAddresses.append((massage[i].split(":")[1], massage[i].split(":")[2]))
 
-        answer = "READY\nPORT:" + str(port)
-        s.send(answer.encode())
-        s.close()
-        sock.settimeout(TICKET_TIMEOUT)
-        (clientSocket, clientAddress) = sock.accept()
-        request = clientSocket.recv(1024)
-        if request == ticket :
-            clientSocket.send("READY\n".encode())
-            try:
-                os.mkdir(FILES_PATH + user)
-            except FileExistsError :
-                pass
 
-            file = open(FILES_PATH + user + "/" + fileName)
-            while True:
-                data = clientSocket.recv(1024)
-                if not data :
-                    break
-                file.write(data)
-                for s in fallowers :
-                    s.send(data)
-
-        else :
-            clientSocket.send("WRONG TICKET".encode())
-
-    except socket.timeout :
-        print("File from %s, ticket: %stimed out." % (user, ticket))
     except socket.error :
         print("Error getting file: " + fileName + " from " + user)
-    finally:
-        sock.close()
-        file.close()
+
+    res = slave_server.SlaveClientProtocol.getFile(s, fileName, user, ticket, fallowersAddresses)
+
+    reportDownloadComplete(res, fileName, md5, user)
 
 
 def giveFile(s, massage):
@@ -116,6 +86,7 @@ def giveFile(s, massage):
         fileName = massage[1].split(":")[1]
         user = massage[2].split(":")[1]
         ticket = massage[3].split(":")[1]
+        md5 = massage[4].split(":")[1]
         sock = socket.socket()
         sock.bind(("", 0))
         port = sock.getsockname()[1]
@@ -126,33 +97,14 @@ def giveFile(s, massage):
             s.close()
             return
 
-
-        s.close()
-        answer = "READY\nPORT:" + str(port)
-        s.send(answer.encode())
-        s.close()
-        sock.settimeout(TICKET_TIMEOUT)
-        (clientSocket, clientAddress) = sock.accept()
-        request = clientSocket.recv(1024)
-        if request == ticket :
-
-            file = open(FILES_PATH + user + "/" + fileName)
-            while True:
-                data = file.read(1024)
-                if not data :
-                    break
-                clientSocket.send(data)
-
-        else :
-            clientSocket.send("WRONG TICKET".encode())
-
-    except socket.timeout :
-        print("File to %s, ticket: %stimed out." % (user, ticket))
     except socket.error :
         print("Error sending file: " + fileName + " to " + user)
-    finally:
-        sock.close()
-        file.close()
+
+    res = slave_server.SlaveClientProtocol.giveFile(s, fileName, user, ticket)
+
+    reportDownloadComplete(res, fileName, md5, user)
+
+
 
 def moveFileFromTmp(massage) :
     fileName = massage[1].split(":")[1]
