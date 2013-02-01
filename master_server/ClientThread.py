@@ -7,19 +7,19 @@ from master_server.main import *
 
 
 class ClientThread(threading.Thread):
-    def __init__(self, threadId, condition, connectionsQueue):
-        print("Making thread " + str(threadId))
-        self.threadId = threadId
-        self.condition = condition
-        self.connectionsQueue = connectionsQueue
+    def __init__(self, client, clientAddress):
         threading.Thread.__init__(self)
+        print("Making thread ")
+        self.client = client
+        self.clientAddress = clientAddress
+
 
 
     def handleClient(self, client, address):
-        print("handleClient thread : " + str(self.threadId))
+        print("handleClient thread")
 
         msg = client.recv(1024)
-        msg = msg.decode('utf-8').split("\n")
+        msg = msg.decode().split("\n")
 
         answer = ""
         header = msg[0]
@@ -35,34 +35,13 @@ class ClientThread(threading.Thread):
         else :
             answer = "WRONG HEADER"
 
-        print("I wanna send !")
+        print("Sending response: " + answer)
         client.send(answer.encode('UTF-8'))
+        client.close()
 
         print(msg)
         print("After msg")
 
 
     def run(self):
-        while True :
-            gotConnection = False
-            client = socket(AF_INET, SOCK_STREAM)
-            address = ()
-
-            condition.acquire()
-            try:
-                while 1:
-                    if not self.connectionsQueue.empty() :
-                        (client, address) = self.connectionsQueue.get()
-                        gotConnection = True
-                        print("thread " + str(self.threadId) + " has new connection")
-                        break
-                    else :
-                        print("thread " + str(self.threadId) + " sleeps")
-                        self.condition.wait()
-                        print("thread " + str(self.threadId) + " wakes up")
-            finally :
-                self.condition.release()
-
-            if gotConnection :
-                self.handleClient(client, address)
-                client.close()
+        self.handleClient(self.client, self.clientAddress)

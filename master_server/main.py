@@ -1,12 +1,12 @@
 from socket import *
 import queue
 import threading
-from master_server import ClientThread
+from master_server.ClientThread import *
 from master_server.BUConfig import *
 
-global connectionsQueue
+
 global MSDataBase
-global condition
+
 
 connectionsQueue = queue.Queue()
 condition = threading.Condition()
@@ -17,28 +17,19 @@ if __name__ == "__main__" :
 
     # Socket
     MSSocket = socket(AF_INET, SOCK_STREAM)
-    MSSocket.bind(("", MS_PORT))
+    #MSSocket.bind(("", MS_PORT))
+    MSSocket.bind(("", 0))
     MSSocket.listen(10)
-    print("main started")
-
-    # Threads production
-    threadList = []
-    for i in range(3) :
-        CT = ClientThread.ClientThread(i, condition, connectionsQueue)
-        CT.start()
-        threadList.append(CT)
+    print("main started on port " + str(MSSocket.getsockname()[1]))
 
     # main while
     while 1 :
         print("Waiting for a connection...")
         (MSClient, clientAddress) = MSSocket.accept()
         print("New connection from: " + str(clientAddress))
-        condition.acquire()
-        try:
-            connectionsQueue.put((MSClient, clientAddress))
-        finally:
-            condition.notifyAll()
-            condition.release()
+        th = ClientThread(MSClient, clientAddress)
+        th.start()
+
 
 
     MSSocket.close()

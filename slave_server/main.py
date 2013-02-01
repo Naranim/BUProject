@@ -7,12 +7,15 @@ from slave_server.SlaveMasterProtocol import *
 if __name__ == '__main__' :
     try :
         os.mkdir("file_sys")
-    except FileExistsError :
+    except OSError :
         pass
 
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind(("", SlavePort))
+   # s.bind(("", SlavePort))
+    s.bind(("", 0))
+    print("slave started on port " + str(s.getsockname()[1]))
+    s.listen(10)
 
     while True :
         (targetSocket, targetAddress) = s.accept()

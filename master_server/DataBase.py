@@ -1,16 +1,17 @@
 from master_server.BUConfig import *
 import postgresql.driver as pg_driver
+import random
 from bin.BULib import *
 
 class DataBase(object):
     """Static class to manage data base"""
 
     DBdriver = pg_driver.connect(
-        user = DB_LOGIN,
-        password = DB_PASS,
-        host = DB_HOST,
-     #   database = DB_NAME,
-        port = DB_PORT
+        user = "root",
+        password = "root",
+        host = "localhost",
+      #  database = DB_NAME,
+        port = 5432
     )
 
     def __init__(self, arg):
@@ -52,13 +53,18 @@ class DataBase(object):
         for i in conditions :
             query += DataBase.toDBString(i[0]) + " = " + DataBase.toDBString(i[1]) + "AND "
         query = query[0:-4] + ";"
-        DataBase.DBdriver.execute(query)
+        DataBase.DBdriver.prepare(query)
 
-
-
-def oblicz(st_zap, il_pol):
-    return ((1-st_zap)**3)*800/(il_pol*il_pol)
+    @staticmethod
+    @myDebug
+    def select(s):
+        tmp =  DataBase.DBdriver.prepare(s)
+        return tmp()
 
 if __name__ == "__main__" :
-
     print("Data base")
+    res = DataBase.select("SELECT id, ip, port FROM slaves WHERE free > " + str(2*10000) + ";")
+    L = res()
+    print(L)
+    random.shuffle(L)
+    print(L)

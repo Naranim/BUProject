@@ -1,57 +1,94 @@
 from master_server.DataBase import *
 from master_server import MasterServerLib
 import time
+import random
+import bin.BULib
+import socket
 
 
 @myDebug
-def login(msg, ip):
-    if not (msg[1][0:6] == "login:" and msg[2][0:7] == "passwd:") : return "WRONG REQUEST"
+def login(msg):
+    if not (msg[1][0:6] == "login:") : return "WRONG REQUEST"
     usrLogin = msg[1][6:]
-    loginSucc = False
     tmp = DataBase.getValues("users", ["id"], [("login", usrLogin)])
     if len(tmp()) == 0 : return "WRONG LOG"
     return "SUCCESS\n"
 
 @myDebug
-def upload(msg, ip):
-    #TODO
-    #wybierz listę najlepszych kandydatów
-    #slavesList = DataBase.DBdriver.
-    #jedź po kolei i znajdź działający
-    #niech sobie gnój czeka na klienta i da port
+def upload(msg):
+    print("In upload")
+    if not (msg[1][0:6] == "login:") : return "WRONG REQUEST"
+    login = msg[1].split(":")[1]
+    fileName = msg[2].split(":")[1]
+    modified = msg[3].split(":")[1]
+    fileSize = msg[4].split(":")[1]
 
-    #wyślij klientowi port, niech się męczy sam
-    if not checkRequest(msg, ip) : return "WRONG REQUEST"
-    return "dupa"
+    slaves = DataBase.select("SELECT id, ip, port FROM slaves WHERE free > " + 2*fileSize + ";")
+    slaves = slaves()
+    random.shuffle(slaves)
+
+    dest = slaves[0]
+
+    ticket = bin.BULib.genRandString(20)
+    s = socket.socket()
+    s.connect((dest[1], dest[2]))
+    s.write("GETFILE\nname:"+fileName+"\nuser:"+login+"\nticket:"+ticket+"\nmodified:"+modified)
+    answer = s.recv()
+
+    s.close()
+
+    return answer.decode()
+
+
 
 @myDebug
-def download(msg, ip):
-    #TODO
-    #wybierz listę serwerów z plikiem
-    #wybierz najmniej obciążony
-    #zagadaj do niego, zdobądź port
-    #wyślij dane klientowi
-    if not checkRequest(msg, ip) : return "WRONG REQUEST"
-    return "dupa"
+def download(msg):
+    login = msg[1].split(":")[1]
+    fileName = msg[2].split(":")[1]
+    modified = msg[3].split(":")[1]
+    slaves = DataBase.select("SELECT slave_id FROM files WHERE user_id="+login+" AND modified="+modified+ " AND name="+fileName+";")
+
+    slaves = slaves()
+    random.shuffle(slaves)
+
+    dest = slaves[0]
+
+    ticket = bin.BULib.genRandString(20)
+    s = socket.socket()
+    s.connect((dest[1], dest[2]))
+    s.write("GIVEFILE\nname:"+fileName+"\nuser:"+login+"\nticket:"+ticket+"\nmodified:"+modified)
+
+    answer = s.recv()
+
+    s.close()
+
+    return answer.decode()
 
 @myDebug
-def getList(msg, ip):
-    if not checkRequest(msg, ip) : return "WRONG REQUEST"
+def getList(msg):
+    if not checkRequest(msg) : return "WRONG REQUEST"
     usrLogin = msg[1][6:]
-    response = DataBase.getValues("users", ["id"], [("login", usrLogin)])
-    usrId = response()[0][0]
-    files = DataBase.getValues("files", ["name", "size", "added"], [("owner", usrId)])
+    files = DataBase.select("SELECT name, modified FROM files WHERE user_id='" + usrLogin + "' group by name, modified;")
     fileList = "Files:\n"
+    print("\n\n---> " + str(files) + "\n\n")
     for row in files:
         for var in row:
             fileList += str(var) + "|"
         # I'm sorry for that :(
-        fileList = fileList[0:-1] + ';'
+        fileList = fileList[0:-1]
 
-    return list;
+    return fileList;
+
 
 @myDebug
-def checkRequest(msg, ip):
+def deleteFile(msg):
+    login = msg[1].split(":")[1]
+    fileName = msg[2].split(":")[1]
+    modified = msg[3].split(":")[1]
+    slaves = DataBase.select("SELECT ")
+
+@myDebug
+def checkRequest(msg):
     if not (msg[1][0:6] == "login:") : return 0
     usrLogin = msg[1][6:]
     tmp = DataBase.getValues("users", ["id"], [("login", usrLogin)])

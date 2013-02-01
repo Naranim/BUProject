@@ -1,6 +1,6 @@
 __author__ = 'ciemny'
 
-import socket
+import socket, time
 from  slave_server.SlaveConfig import *
 
 def getFile(s, fileName, user, ticket, fallowersAddresses):
@@ -25,15 +25,20 @@ def getFile(s, fileName, user, ticket, fallowersAddresses):
         s.send(answer.encode())
         s.close()
         sock.settimeout(TICKET_TIMEOUT)
+
+        print("Waiting for client, port: " + str(port))
+
+        sock.listen(10)
         (clientSocket, clientAddress) = sock.accept()
-        request = clientSocket.recv(1024)
+        print("dupa")
+        request = clientSocket.recv(1024).decode()
         if request == ticket :
             clientSocket.send("READY\n".encode())
             try:
                 os.mkdir(FILES_PATH + user)
             except FileExistsError :
                 pass
-
+                print("dupa")
             file = open(FILES_PATH + user + "/" + fileName, "wb")
             while True:
                 data = clientSocket.recv(1024)
@@ -46,9 +51,11 @@ def getFile(s, fileName, user, ticket, fallowersAddresses):
         else :
             clientSocket.send("WRONG TICKET".encode())
             clientSocket.close()
+            print(request)
             return "FAILED"
 
         clientSocket.close()
+        print("Sending complete")
 
     except socket.timeout :
         print("File from %s, ticket: %stimed out." % (user, ticket))
@@ -78,24 +85,31 @@ def giveFile(s, fileName, user, ticket):
         s.send(answer.encode())
         s.close()
         sock.settimeout(TICKET_TIMEOUT)
+        sock.listen(10)
+        print("Waiting for client, port: " + str(port))
         (clientSocket, clientAddress) = sock.accept()
-        request = clientSocket.recv(1024)
+        request = clientSocket.recv(1024).decode()
+        file = open(FILES_PATH + user + "/" + fileName, "rb")
         if request == ticket :
-
-            file = open(FILES_PATH + user + "/" + fileName, "rb")
+            print("Good ticket")
+            print(FILES_PATH + user + "/" + fileName)
             while True:
                 data = file.read(1024)
+                print("Sending...")
+                time.sleep(0.01)
                 if not data :
+                    print("End of data")
                     break
                 clientSocket.send(data)
 
         else :
+            print("wrong ticket")
             clientSocket.send("WRONG TICKET".encode())
             clientSocket.close()
             return "FAILED"
 
         clientSocket.close()
-
+        print("Sending complete")
     except socket.timeout :
         print("File to %s, ticket: %stimed out." % (user, ticket))
         return "FAILED"
@@ -107,3 +121,7 @@ def giveFile(s, fileName, user, ticket):
         file.close()
 
     return "OK"
+
+
+if __name__ == '__main__' :
+    giveFile(None, "file.jpg", "root", "A")

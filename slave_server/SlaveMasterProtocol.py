@@ -63,7 +63,6 @@ def getFile(s, massage):
         fileName = massage[1].split(":")[1]
         user = massage[2].split(":")[1]
         ticket = massage[3].split(":")[1]
-        md5 = massage[4].split(":")[1]
         sock = socket.socket()
         sock.bind(("", 0))
         port = sock.getsockname()[1]
@@ -111,7 +110,7 @@ def moveFileFromTmp(massage) :
     user = massage[2].split(":")[1]
     try :
         shutil.move(TMP_PATH + user + "/" + fileName, FILES_PATH + user)
-    except FileNotFoundError:
+    except IOError:
         print("Error moving " + fileName)
 
 def moveFileToTmp(massage) :
@@ -119,7 +118,7 @@ def moveFileToTmp(massage) :
     user = massage[2].split(":")[1]
     try :
         shutil.move(FILES_PATH + user + "/" + fileName, TMP_PATH + user)
-    except FileNotFoundError:
+    except IOError:
         print("Error moving " + fileName)
 
 def deleteFile(s, massage):
@@ -127,7 +126,7 @@ def deleteFile(s, massage):
     user = massage[2].split(":")[1]
     try:
         os.remove(FILES_PATH + user + "/" + fileName)
-    except FileNotFoundError:
+    except IOError:
         print("Error deleting " + fileName)
 
 def deleteFileInTmp(massage):
@@ -135,7 +134,7 @@ def deleteFileInTmp(massage):
     user = massage[2].split(":")[1]
     try:
         os.remove(TMP_PATH + user + "/" + fileName)
-    except FileNotFoundError:
+    except IOError:
         print("Error deleting " + fileName)
 
 def reportState(s, massage):
