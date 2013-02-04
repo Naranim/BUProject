@@ -7,7 +7,14 @@ from master_server.main import *
 
 
 class ClientThread(threading.Thread):
+    """
+    Klasa watku do obslugi klienta polaczonego z glownym serwerem.
+    """
     def __init__(self, client, clientAddress):
+        """
+        konstruktor ClientThrerad
+        Jako argumenty przyjmuje socket klienta i jego adres
+        """
         threading.Thread.__init__(self)
         print("Making thread ")
         self.client = client
@@ -16,6 +23,10 @@ class ClientThread(threading.Thread):
 
 
     def handleClient(self, client, address):
+        """
+        Obsluga zapytania od klienta
+        dostaje socket i adres, odczytuje zapytanie i je rozpatruje
+        """
         print("handleClient thread")
 
         msg = client.recv(1024)
@@ -32,6 +43,8 @@ class ClientThread(threading.Thread):
             answer = master_server.ClientMasterProtocol.upload(msg)
         elif header == "GETLIST" :
             answer = master_server.ClientMasterProtocol.getList(msg)
+        elif header == "COMPLETE_DOWNLOAD" :
+            answer = master_server.ClientMasterProtocol.complete_download(msg)
         else :
             answer = "WRONG HEADER"
 
@@ -44,4 +57,7 @@ class ClientThread(threading.Thread):
 
 
     def run(self):
+        """
+        Nadpisana metoda run. Uruchamiana jest podczas uruchomienia watku.
+        """
         self.handleClient(self.client, self.clientAddress)

@@ -2,13 +2,19 @@ import string
 import random
 
 def genRandString(dl = 10):
+    """
+    Zwraca losowy ciag znakow dlugosci dl. Znaki to male i duze litery alfabetu angielskiego oraz cyfry.
+    """
     ret = ''
     for i in range(dl) :
         ret += random.choice(string.ascii_letters + string.digits)
     return ret
 
 class myDebug(object) :
-    """ class to debug - print args, resaults and names """
+    """
+    Klasa do debugu
+    Opakowanie nia metody zapewni wypisanie jej wywolan, argumentow i rezultatu
+    """
     def __init__(self, fun) :
         self.fun = fun
     def __call__(self, *args, **kargs) :

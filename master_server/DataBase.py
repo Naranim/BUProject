@@ -4,7 +4,10 @@ import random
 from bin.BULib import *
 
 class DataBase(object):
-    """Static class to manage data base"""
+    """Statyczna klasa obslugujaca polaczenie z baza danych w postgresie
+        Dane potrzebne do polaczenia pobiera z BUConfig.py
+        Za jej posrednictwem odbywaja sie wszystkie zapytania do bazy
+    """
 
     DBdriver = pg_driver.connect(
         user = "root",
@@ -19,13 +22,19 @@ class DataBase(object):
 
     @staticmethod
     def toDBString(val) :
+        """
+        pomocnicza metoda do zamiany zmiennych na odpowiednie argumenty w pgsqlu
+        """
         if isinstance(val, str) : return "'" + val + "'"
         else : return str(val)
 
     @staticmethod
     @myDebug
     def getValues(table, valuesNames, conditions):
-        """Method to get rows with selected values and given conditions"""
+        """Metoda do pobrania danych z tabeli table
+        Pobiera wartosci z listy values
+        Pod warunkami rownosci z listy par conditions
+        """
         query = "SELECT "
         for i in valuesNames:
             query += i + ", "
@@ -40,7 +49,7 @@ class DataBase(object):
     @staticmethod
     @myDebug
     def insertValues(table, values):
-        """Insert array values to table"""
+        """Wstawia wartosci values do tabeli table"""
         query = "INSERT INTO " + table + " VALUES ("
         for i in values : query += DataBase.toDBString(i) + ", "
         query = query[0:-2] + ");"
@@ -49,16 +58,20 @@ class DataBase(object):
     @staticmethod
     @myDebug
     def removeValues(table, conditions) :
+        """
+        Usuwa krotki spelniajace rownosci z listy par conditions z tabeli table
+        """
         query = "DELETE FROM " + table + " WHERE "
         for i in conditions :
             query += DataBase.toDBString(i[0]) + " = " + DataBase.toDBString(i[1]) + "AND "
         query = query[0:-4] + ";"
         DataBase.DBdriver.prepare(query)
 
-    @staticmethod
-    @myDebug
-    def select(s):
-        tmp =  DataBase.DBdriver.prepare(s)
+    def select(s) -> list:
+        """
+        Zwraca rezultat zapytania s
+        """
+        tmp = DataBase.DBdriver.prepare(s)
         return tmp()
 
 if __name__ == "__main__" :

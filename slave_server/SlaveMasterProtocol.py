@@ -44,17 +44,17 @@ def connectToMaster() :
         print(answer)
 
 
-def reportDownloadComplete(file, user, modified, slave_id):
+def reportDownloadComplete(file, user, modified, slave_id, size):
     """
     raport dla master serwera o zakonczeniu pobierania
     pliku file
     od uzytkownika user
     zmodyfikowanego modified
     """
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try :
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((MasterAddress, MasterPort))
-        massage = "COMPLETE_DOWNLOAD\nfile:" + file + "\nuser" + user + "\nmodified" + modified + "\nslave:" + slave_id
+        massage = "COMPLETE_DOWNLOAD\nfile:" + file + "\nuser" + user + "\nmodified" + modified + "\nslave:" + slave_id + "\nsize:" + size
         s.send(massage.encode())
     finally:
         s.close()
@@ -82,26 +82,28 @@ def getFile(s, massage):
 
     Argument to socket i zapytanie od master serwera
     """
+    fileName = massage[1].split(":")[1]
+    user = massage[2].split(":")[1]
+    ticket = massage[3].split(":")[1]
+    slave_id = massage[4].split(":")[1]
+    modified = massage[5].split(":")[1]
+    size = massage[6].split(":")[1]
     try:
-        fileName = massage[1].split(":")[1]
-        user = massage[2].split(":")[1]
-        ticket = massage[3].split(":")[1]
-        slave_id = massage[4].split(":")[1]
         sock = socket.socket()
         sock.bind(("", 0))
         port = sock.getsockname()[1]
 
         fallowersAddresses = []
-        for i in range(5, len(massage)) :
+        for i in range(7, len(massage)) :
             fallowersAddresses.append((massage[i].split(":")[1], massage[i].split(":")[2]))
 
 
     except socket.error :
-        print("Error getting file: " + fileName + " from " + user)
+        print("Error getting file")
 
-    res = slave_server.SlaveClientProtocol.getFile(s, fileName, user, ticket, fallowersAddresses, slave_id)
+    res = slave_server.SlaveClientProtocol.getFile(s, fileName, user, ticket, fallowersAddresses)
 
-    reportDownloadComplete(res, fileName, user)
+    reportDownloadComplete(res, fileName, user, slave_id, modified)
 
 
 def giveFile(s, massage):
@@ -112,12 +114,15 @@ def giveFile(s, massage):
 
     Argument to socket i zapytanie od master serwera
     """
+    fileName = massage[1].split(":")[1]
+    user = massage[2].split(":")[1]
+    ticket = massage[3].split(":")[1]
+    slave_id = massage[4].split(":")[1]
+    modified = massage[5].split(":")[1]
+    size = massage[6].split(":")[1]
 
-    try:
-        fileName = massage[1].split(":")[1]
-        user = massage[2].split(":")[1]
-        ticket = massage[3].split(":")[1]
-        slave_id = massage[4].split(":")[1]
+
+    try :
         sock = socket.socket()
         sock.bind(("", 0))
         port = sock.getsockname()[1]
@@ -129,11 +134,11 @@ def giveFile(s, massage):
             return
 
     except socket.error :
-        print("Error sending file: " + fileName + " to " + user)
+        print("Error getting file")
 
     res = slave_server.SlaveClientProtocol.giveFile(s, fileName, user, ticket)
 
-    reportDownloadComplete(res, fileName, user)
+    reportDownloadComplete(res, fileName, user, slave_id, size, modified)
 
 
 def deleteFile(massage):
@@ -144,8 +149,9 @@ def deleteFile(massage):
     """
     fileName = massage[1].split(":")[1]
     user = massage[2].split(":")[1]
+    modified = massage[2].split(":")[1]
     try:
-        os.remove(FILES_PATH + user + "/" + fileName)
+        os.remove(FILES_PATH + user + "/" + modified + "/" + fileName)
     except IOError:
         print("Error deleting " + fileName)
 

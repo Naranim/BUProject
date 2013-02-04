@@ -13,7 +13,6 @@ condition = threading.Condition()
 
 
 if __name__ == "__main__" :
-    "main of mains"
 
     # Socket
     MSSocket = socket(AF_INET, SOCK_STREAM)
